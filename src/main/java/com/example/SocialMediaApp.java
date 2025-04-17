@@ -8,7 +8,18 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
 
+import com.example.service.MessageService;
+
 import static org.springframework.boot.SpringApplication.run;
+
+import java.util.Arrays;
+
+// Delete these imports
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.boot.CommandLineRunner;
+
+
 
 /**
  * This is a class that is used to run your application.
@@ -24,6 +35,14 @@ public class SocialMediaApp {
      * @throws InterruptedException 
      */
     public static void main(String[] args) throws InterruptedException {
-        SpringApplication.run(SocialMediaApp.class, args);
+        // SpringApplication.run(SocialMediaApp.class, args);
+
+        //Delete Everything under this
+        ApplicationContext ctx = SpringApplication.run(SocialMediaApp.class, args);
+
+        MessageService ms = ctx.getBean(MessageService.class);
+        System.out.println(ms);
     }
+
+
 }
