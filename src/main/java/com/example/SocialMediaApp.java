@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
 
+import com.example.entity.Account;
+import com.example.service.AccountService;
 import com.example.service.MessageService;
 
 import static org.springframework.boot.SpringApplication.run;
@@ -40,25 +42,47 @@ public class SocialMediaApp {
 
         //Delete Everything under this
         ApplicationContext ctx = SpringApplication.run(SocialMediaApp.class, args);
-
+        AccountService as = ctx.getBean(AccountService.class);
         MessageService ms = ctx.getBean(MessageService.class);
-        System.out.println(ms);
+
+        System.out.println("----- TESTING -----");
+        System.out.println();
+        System.out.println();
+        Account acc1 = new Account("user1", "pass1");
+        Account acc2 = new Account("user2", "pass2");
+        Account acc3 = new Account("user3", "pass3");
+
+        // Invalid Accounts
+        // Account acc4 = new Account("    ", "password4");
+        // Account acc5 = new Account("user5", "pw2");
+        Account acc6 = new Account("testuser1", "pw21");
+
+
+        as.register(acc1);
+        as.register(acc2);
+        as.register(acc3);
+
+        // as.register(acc4);
+        // as.register(acc5);
+        // as.register(acc6);
+
+        System.out.println(as.getAllAccounts());
     }
 
-    @Bean
-    public CommandLineRunner inspectorBean(ApplicationContext ctx) {
-        return args -> {
-            System.out.printf("Inspecting the Beans provided by Spring Boot");
-            System.out.println();
-            String[] beans = ctx.getBeanDefinitionNames();
+    // @Bean
+    // public CommandLineRunner inspectorBean(ApplicationContext ctx) {
+    //     return args -> {
+    //         System.out.printf("Inspecting the Beans provided by Spring Boot");
+    //         System.out.println();
+    //         String[] beans = ctx.getBeanDefinitionNames();
 
-            for (String bean : beans) {
-                System.out.println(bean);
-            }
+    //         for (String bean : beans) {
+    //             System.out.println(bean);
+    //         }
 
-            System.out.println("Ending inspection");
-        };
-    }
+    //         System.out.println("Ending inspection");
+    //     };
+    // }
 
 
 }

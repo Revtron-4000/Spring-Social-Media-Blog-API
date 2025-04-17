@@ -23,22 +23,16 @@ import com.example.service.MessageService;
  */
 @Controller
 public class SocialMediaController {
-    @Autowired
     private AccountService as;
-
-    @Autowired
     private MessageService ms;
 
-    @GetMapping("user")
-    public @ResponseBody List<Account> getAllAccounts() {
-        return as.getAllAccounts();
+    @Autowired
+    public SocialMediaController(AccountService as, MessageService ms) {
+        this.as = as;
+        this.ms = ms;
     }
 
 
-    // @PostMapping("register")
-    // public @ResponseBody ResponseEntity<String> createAccount(@RequestBody Account acc) {
-
-    // }
 
     @GetMapping("messages")
     public @ResponseBody List<Message> getAllMessages() {
