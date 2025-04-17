@@ -3,6 +3,9 @@ package com.example.service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+
+import javax.security.sasl.AuthenticationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -47,5 +50,10 @@ public class AccountService {
         return ar.save(acc);
     }
 
+    public Account login(Account givenAcc) throws AuthenticationException {
+        Account foundAcc = ar.findByUsernameAndPassword(givenAcc.getUsername(), givenAcc.getPassword())
+            .orElseThrow(() -> new AuthenticationException("Credentials are invalid. Check your username and password."));
 
+        return foundAcc;
+    }
 }

@@ -5,7 +5,12 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.entity.Account;
@@ -15,6 +20,8 @@ import com.example.service.MessageService;
 import static org.springframework.boot.SpringApplication.run;
 
 import java.util.Arrays;
+
+import javax.security.sasl.AuthenticationException;
 
 // Delete these imports
 import org.springframework.context.ApplicationContext;
@@ -83,6 +90,4 @@ public class SocialMediaApp {
     //         System.out.println("Ending inspection");
     //     };
     // }
-
-
 }
