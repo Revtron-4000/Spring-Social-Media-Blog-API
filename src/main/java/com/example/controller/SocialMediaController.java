@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.entity.Account;
@@ -28,14 +29,14 @@ public class SocialMediaController {
     @Autowired
     private MessageService ms;
 
-    // @GetMapping("user")
-    // public @ResponseBody List<Account> getAllAccounts() {
-    //     return as.getAllAccounts();
-    // }
+    @GetMapping("user")
+    public @ResponseBody List<Account> getAllAccounts() {
+        return as.getAllAccounts();
+    }
 
 
     // @PostMapping("register")
-    // public @ResponseBody ResponseEntity<String> createAccount() {
+    // public @ResponseBody ResponseEntity<String> createAccount(@RequestBody Account acc) {
 
     // }
 

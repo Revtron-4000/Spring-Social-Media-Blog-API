@@ -10,10 +10,18 @@ import com.example.repository.AccountRepository;
 
 @Service
 public class AccountService {
+    private final AccountRepository ar;
+
     @Autowired
-    private AccountRepository ar;
+    public AccountService(AccountRepository ar) {
+        this.ar = ar;
+    }
 
     public List<Account> getAllAccounts() {
         return ar.findAll();
+    }
+
+    public Account register(Account acc) {
+        return ar.save(acc);
     }
 }

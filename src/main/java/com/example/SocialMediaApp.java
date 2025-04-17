@@ -17,6 +17,7 @@ import java.util.Arrays;
 // Delete these imports
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 
 
@@ -42,6 +43,21 @@ public class SocialMediaApp {
 
         MessageService ms = ctx.getBean(MessageService.class);
         System.out.println(ms);
+    }
+
+    @Bean
+    public CommandLineRunner inspectorBean(ApplicationContext ctx) {
+        return args -> {
+            System.out.printf("Inspecting the Beans provided by Spring Boot");
+            System.out.println();
+            String[] beans = ctx.getBeanDefinitionNames();
+
+            for (String bean : beans) {
+                System.out.println(bean);
+            }
+
+            System.out.println("Ending inspection");
+        };
     }
 
 
