@@ -34,8 +34,5 @@ public class SocialMediaController {
 
 
 
-    @GetMapping("messages")
-    public @ResponseBody List<Message> getAllMessages() {
-        return ms.getAllMessages();
-    }
+
 }
