@@ -85,25 +85,13 @@ public class SocialMediaApp {
         System.out.println("AFTER I ADDED MESSAGES");
         System.out.println(ms.getAllMessages());
 
-        // Blank Message
-        Message m4 = new Message(null, "    ", null);
+        System.out.println("THESE ARE ALL OF ACCOUNT_ID=1's MESSAGES");
+        System.out.println(ms.getAccountMessages(1));
+        System.out.println();
+        System.out.println(ms.getAccountMessages(70));
+        System.out.println();
+        System.out.println(ms.getAccountMessages(9996));
 
-        // Over 255 chars
-        Message m5 = new Message(null, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,.", null);
-
-        // Invalid messageId (later below)
-        Message m6 = new Message(null, "updatedMessage", null);
-
-        //Actually successful
-        Message m7 = new Message(null, "actually updated", null);
-
-        // System.out.println("UPDATING MESSAGES");
-        // System.out.println(ms.updateMessageById(9996, m4));
-        // System.out.println(ms.updateMessageById(9997, m5));
-        // System.out.println(ms.updateMessageById(60, m6));
-        // System.out.println(ms.updateMessageById(1, m7));
-
-        // System.out.println(ms.getAllMessages());
 
     }
 

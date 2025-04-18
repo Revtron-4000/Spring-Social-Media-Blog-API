@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,23 +18,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 
 import com.example.entity.Account;
+import com.example.entity.Message;
 import com.example.exception.DuplicateUsernameException;
 import com.example.exception.RegisterException;
 import com.example.service.AccountService;
+import com.example.service.MessageService;
 
 @Controller
 public class AccountController {
     
     private AccountService as;
+    private MessageService ms;
 
     @Autowired
-    public AccountController(AccountService as) {
+    public AccountController(AccountService as, MessageService ms) {
         this.as = as;
+        this.ms = ms;
     }
 
-    @GetMapping("user")
+    @GetMapping("accounts")
     public @ResponseBody List<Account> getAllAccounts() {
         return as.getAllAccounts();
+    }
+
+    @GetMapping("accounts/{account_id}/messages")
+    public @ResponseBody List<Message> getAllAccountMessages(@PathVariable Integer account_id) {
+        return ms.getAccountMessages(account_id);
     }
 
     @PostMapping("register")

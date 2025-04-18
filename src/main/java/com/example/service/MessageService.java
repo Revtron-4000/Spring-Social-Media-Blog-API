@@ -88,4 +88,8 @@ public class MessageService {
             throw new MessageException("No such message_id exists");
         }
     }
+
+    public List<Message> getAccountMessages(Integer account_id) {
+        return messageRepo.findByPostedBy(account_id);
+    }
 }
