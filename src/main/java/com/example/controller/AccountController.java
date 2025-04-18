@@ -55,7 +55,6 @@ public class AccountController {
     @PostMapping("login")
     public @ResponseBody ResponseEntity<Account> login(@RequestBody Account givenAcc) throws AuthenticationException{
         Account loggedInAccount = as.login(givenAcc);
-        System.out.println("Login sucessful!");
         return ResponseEntity.status(200).body(loggedInAccount);
     }
 
@@ -68,7 +67,6 @@ public class AccountController {
     @ResponseStatus(HttpStatus.CONFLICT)
     public @ResponseBody ResponseEntity<String> handleDuplicateUsername(DuplicateUsernameException ex) {
         ResponseEntity<String> re = ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
-        System.out.println(re.getStatusCode());
         return re;
     }
 
@@ -76,7 +74,6 @@ public class AccountController {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public @ResponseBody ResponseEntity<String> handleRegisterException(RegisterException ex) {
         ResponseEntity<String> re = ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
-        System.out.println(re.getStatusCode());
         return re;
     }
 
@@ -84,7 +81,6 @@ public class AccountController {
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public @ResponseBody ResponseEntity<String> handleUnauthorized(AuthenticationException ex) {
         ResponseEntity<String> re = ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(ex.getMessage());
-        System.out.println(re.getStatusCode());
         return re;
     }
 }

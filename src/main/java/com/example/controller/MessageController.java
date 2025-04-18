@@ -69,7 +69,6 @@ public class MessageController {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public @ResponseBody ResponseEntity<String> handleMessageException(MessageException ex) {
         ResponseEntity<String> re = ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
-        System.out.println(re.getStatusCode());
         return re;
     }
 }
