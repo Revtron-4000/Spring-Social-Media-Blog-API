@@ -77,7 +77,6 @@ public class SocialMediaApp {
         Message m2 = new Message(1, "This is user1's second message", 3L);
         Message m3 = new Message(1, "This is user1's third message", 4L);
 
-
         ms.createMessage(m1);
         ms.createMessage(m2);
         ms.createMessage(m3);
@@ -86,10 +85,25 @@ public class SocialMediaApp {
         System.out.println("AFTER I ADDED MESSAGES");
         System.out.println(ms.getAllMessages());
 
-        System.out.println("AFTER I DELETED MESSAGES");
-        System.out.println(ms.deleteMessageById(1));
-        System.out.println(ms.deleteMessageById(2));
-        System.out.println(ms.getAllMessages());
+        // Blank Message
+        Message m4 = new Message(null, "    ", null);
+
+        // Over 255 chars
+        Message m5 = new Message(null, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,.", null);
+
+        // Invalid messageId (later below)
+        Message m6 = new Message(null, "updatedMessage", null);
+
+        //Actually successful
+        Message m7 = new Message(null, "actually updated", null);
+
+        // System.out.println("UPDATING MESSAGES");
+        // System.out.println(ms.updateMessageById(9996, m4));
+        // System.out.println(ms.updateMessageById(9997, m5));
+        // System.out.println(ms.updateMessageById(60, m6));
+        // System.out.println(ms.updateMessageById(1, m7));
+
+        // System.out.println(ms.getAllMessages());
 
     }
 

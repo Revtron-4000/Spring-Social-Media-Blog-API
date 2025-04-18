@@ -65,4 +65,27 @@ public class MessageService {
             return null;
         }
     }
+
+    public Integer updateMessageById(Integer id, Message givenMessage) {
+        Optional<Message> foundMessage = messageRepo.findById(id);
+
+        if (foundMessage.isPresent()) {
+            Message oldMessage = foundMessage.get();
+            String newMessageText = givenMessage.getMessageText();
+
+            if (newMessageText.isBlank()) {
+                throw new MessageException("This new message is blank.");
+            }
+
+            if (newMessageText.length() > 255) {
+                throw new MessageException("This message is over 255 characters");
+            }
+
+            oldMessage.setMessageText(newMessageText);
+            messageRepo.save(oldMessage);
+            return 1;
+        } else {
+            throw new MessageException("No such message_id exists");
+        }
+    }
 }

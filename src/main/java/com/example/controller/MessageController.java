@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -53,6 +54,13 @@ public class MessageController {
         Integer numOfDeletedMessages = ms.deleteMessageById(message_id);
 
         return ResponseEntity.status(HttpStatus.OK).body(numOfDeletedMessages);
+    }
+
+    @PatchMapping("/{message_id}")
+    public @ResponseBody ResponseEntity<Integer> updateMessage(@PathVariable Integer message_id, @RequestBody Message givenMessage) {
+        Integer numUpdatedRows = ms.updateMessageById(message_id, givenMessage);
+
+        return ResponseEntity.status(HttpStatus.OK).body(numUpdatedRows);
     }
 
 
