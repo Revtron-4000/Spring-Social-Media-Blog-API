@@ -61,21 +61,11 @@ public class SocialMediaApp {
         // // Testing Account model
         Account acc1 = new Account("user1", "pass1");
         Account acc2 = new Account("user2", "pass2");
-        // Account acc3 = new Account("user3", "pass3");
-
-        // // Invalid Accounts
-        // // Account acc4 = new Account("    ", "password4");
-        // // Account acc5 = new Account("user5", "pw2");
-        // // Account acc6 = new Account("testuser1", "pw21");
-
+        Account acc3 = new Account("user3", "pass3");
 
         as.register(acc1);
         as.register(acc2);
-        // as.register(acc3);
-
-        // // as.register(acc4);
-        // // as.register(acc5);
-        // // as.register(acc6);
+        as.register(acc3);
 
         System.out.println("Looking at accounts...");
         System.out.println(as.getAllAccounts());
@@ -96,17 +86,11 @@ public class SocialMediaApp {
         System.out.println("AFTER I ADDED MESSAGES");
         System.out.println(ms.getAllMessages());
 
-        System.out.println("NOW I WILL ADD INVALID MESSAGES");
-        // Message m4 = new Message(1, "   ", 10L);
-        // Message m5 = new Message(1, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,", 11L);
-        // Message m6 = new Message(50, "This is user1's third message", 12L);
-
-        // ms.createMessage(m4);
-        // ms.createMessage(m5);
-        // ms.createMessage(m6);
-
-        System.out.println("AFTER I ADDED INVALID MESSAGES");
+        System.out.println("AFTER I DELETED MESSAGES");
+        System.out.println(ms.deleteMessageById(1));
+        System.out.println(ms.deleteMessageById(2));
         System.out.println(ms.getAllMessages());
+
     }
 
     // @Bean
